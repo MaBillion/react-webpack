@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { inject, observer } from 'mobx-react'
+import styled from 'styled-components'
 
 @inject((stores) => {
     return {
@@ -14,16 +15,31 @@ class App extends Component {
     render () {
         let { num, getDoubleNum, onIncrement, onDecrement } = this.props
         return (
-            <div>
-                <p>Count: {num}</p>
-                <p>DoubleCount: {getDoubleNum}</p>
-                <div>
+            <Wrapper>
+                <Title>Count: {num}</Title>
+                <Title>DoubleCount: {getDoubleNum}</Title>
+                <ButtonContainer>
                     <button onClick={onIncrement}> + </button>
                     <button onClick={onDecrement}> - </button>
-                </div>
-            </div>
+                </ButtonContainer>
+            </Wrapper>
         )
     }
 }
+
+const Wrapper = styled.section`
+    padding: 4em;
+    background: papayawhip;
+`;
+
+const Title = styled.h1`
+    font-size: 1.5em;
+    text-align: center;
+    color: palevioletred;
+`;
+
+const ButtonContainer = styled.div`
+    text-align: center;
+`
 
 export default App
